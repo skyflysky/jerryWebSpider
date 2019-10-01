@@ -8,23 +8,28 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class LesheImagesService {
-    @Autowired
-    private LesheImagesDao lesheImagesDao;
+public class LesheImagesService
+{
+	@Autowired
+	private LesheImagesDao lesheImagesDao;
 
-    public void insertOrUpdate(LesheImages lesheImages) {
-        lesheImagesDao.save(lesheImages);
-    }
+	public void insertOrUpdate(LesheImages lesheImages)
+	{
+		lesheImagesDao.save(lesheImages);
+	}
 
-    public List<LesheImages> getNotDownloadedList() {
-        return lesheImagesDao.findAllByDownloaded(DownloadedStatusEnum.NOT_DOWNLOADED.getCode());
-    }
+	public List<LesheImages> getNotDownloadedList()
+	{
+		return lesheImagesDao.findAllByDownloaded(DownloadedStatusEnum.NOT_DOWNLOADED.getCode());
+	}
 
-    public void delete(LesheImages lesheImages) {
-        lesheImagesDao.delete(lesheImages);
-    }
+	public void delete(LesheImages lesheImages)
+	{
+		lesheImagesDao.delete(lesheImages);
+	}
 
-    public LesheImages findByTitle(String title) {
-        return lesheImagesDao.findByTitle(title);
-    }
+	public LesheImages findByTitle(String title)
+	{
+		return lesheImagesDao.findByTitle(title);
+	}
 }

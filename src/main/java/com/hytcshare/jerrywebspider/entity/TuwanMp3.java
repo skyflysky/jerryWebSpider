@@ -13,10 +13,11 @@ import javax.persistence.*;
 @EntityListeners(AuditingEntityListener.class)
 @Data
 @Table(name = "tuwan_mp3")
-public class TuwanMp3 {
-    @Id
-    private int id;
-    private String bgmName;
-    private String bgm;
-    private int downloaded;
+public class TuwanMp3
+{
+	@Id
+	private int id;
+	private String bgmName;
+	private String bgm;
+	private int downloaded;
 }

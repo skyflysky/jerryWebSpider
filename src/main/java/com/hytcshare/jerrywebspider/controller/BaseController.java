@@ -13,23 +13,25 @@ import java.util.*;
  */
 @Controller
 @Slf4j
-class BaseController {
+class BaseController
+{
 
-    void sealSuccess(DeferredResult deferredResult, Object data) {
-        HashMap<String, Object> resultMap = new HashMap<>();
-        resultMap.put("code", ServerStatusEnum.OK.getCode());
-        resultMap.put("msg", "");
-        resultMap.put("data", data);
-        deferredResult.setResult(resultMap);
-    }
+	void sealSuccess(DeferredResult deferredResult, Object data)
+	{
+		HashMap<String, Object> resultMap = new HashMap<>();
+		resultMap.put("code", ServerStatusEnum.OK.getCode());
+		resultMap.put("msg", "");
+		resultMap.put("data", data);
+		deferredResult.setResult(resultMap);
+	}
 
-    void sealFail(DeferredResult deferredResult, String msg) {
-        HashMap<String, Object> resultMap = new HashMap<>();
-        resultMap.put("code", ServerStatusEnum.ERROR.getCode());
-        resultMap.put("msg", msg);
-        resultMap.put("data", null);
-        deferredResult.setResult(resultMap);
-    }
-
+	void sealFail(DeferredResult deferredResult, String msg)
+	{
+		HashMap<String, Object> resultMap = new HashMap<>();
+		resultMap.put("code", ServerStatusEnum.ERROR.getCode());
+		resultMap.put("msg", msg);
+		resultMap.put("data", null);
+		deferredResult.setResult(resultMap);
+	}
 
 }

@@ -8,19 +8,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TuwanImagesService {
-    @Autowired
-    private TuwanImagesDao tuwanImagesDao;
+public class TuwanImagesService
+{
+	@Autowired
+	private TuwanImagesDao tuwanImagesDao;
 
-    public void insertOrUpdate(TuwanImages tuwanImages) {
-        tuwanImagesDao.save(tuwanImages);
-    }
+	public void insertOrUpdate(TuwanImages tuwanImages)
+	{
+		tuwanImagesDao.save(tuwanImages);
+	}
 
-    public List<TuwanImages> getNotDownloadedList() {
-        return tuwanImagesDao.findAllByDownloaded(DownloadedStatusEnum.NOT_DOWNLOADED.getCode());
-    }
+	public List<TuwanImages> getNotDownloadedList()
+	{
+		return tuwanImagesDao.findAllByDownloaded(DownloadedStatusEnum.NOT_DOWNLOADED.getCode());
+	}
 
-    public void delete(TuwanImages tuwanImages) {
-        tuwanImagesDao.delete(tuwanImages);
-    }
+	public void delete(TuwanImages tuwanImages)
+	{
+		tuwanImagesDao.delete(tuwanImages);
+	}
 }

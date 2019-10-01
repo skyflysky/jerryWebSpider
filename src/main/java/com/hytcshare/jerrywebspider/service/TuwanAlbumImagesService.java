@@ -8,31 +8,39 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TuwanAlbumImagesService {
-    @Autowired
-    private TuwanAlbumImagesDao tuwanAlbumImagesDao;
+public class TuwanAlbumImagesService
+{
+	@Autowired
+	private TuwanAlbumImagesDao tuwanAlbumImagesDao;
 
-    public void insertOrUpdate(TuwanAlbumImages tuwanAlbumImages) {
-        tuwanAlbumImagesDao.save(tuwanAlbumImages);
-    }
+	public void insertOrUpdate(TuwanAlbumImages tuwanAlbumImages)
+	{
+		tuwanAlbumImagesDao.save(tuwanAlbumImages);
+	}
 
-    public TuwanAlbumImages fingByUrl(String imgUrl) {
-        return tuwanAlbumImagesDao.findByUrl(imgUrl);
-    }
+	public TuwanAlbumImages fingByUrl(String imgUrl)
+	{
+		return tuwanAlbumImagesDao.findByUrl(imgUrl);
+	}
 
-    public int countByTitle(String title){
-        List<TuwanAlbumImages> allByTitle = tuwanAlbumImagesDao.findAllByTitle(title);
-        if (allByTitle == null){
-            return 0;
-        }
-        return allByTitle.size();
-    }
+	public int countByTitle(String title)
+	{
+		List<TuwanAlbumImages> allByTitle = tuwanAlbumImagesDao.findAllByTitle(title);
+		if (allByTitle == null)
+		{
+			return 0;
+		}
+		return allByTitle.size();
+	}
 
-    public List<TuwanAlbumImages> getNotDownloadedList() {
-        return tuwanAlbumImagesDao.findAllByDownloaded(DownloadedStatusEnum.NOT_DOWNLOADED.getCode());
-    }
+	public List<TuwanAlbumImages> getNotDownloadedList()
+	{
+		return tuwanAlbumImagesDao.findAllByDownloaded(DownloadedStatusEnum.NOT_DOWNLOADED.getCode());
+	}
 
-    public List<TuwanAlbumImages> getNotDownloadedListByIndex(int index) {
-        return tuwanAlbumImagesDao.findAllByDownloadedAndAlbumIndex(DownloadedStatusEnum.NOT_DOWNLOADED.getCode(),index);
-    }
+	public List<TuwanAlbumImages> getNotDownloadedListByIndex(int index)
+	{
+		return tuwanAlbumImagesDao.findAllByDownloadedAndAlbumIndex(DownloadedStatusEnum.NOT_DOWNLOADED.getCode(),
+				index);
+	}
 }

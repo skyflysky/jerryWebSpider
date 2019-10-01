@@ -4,10 +4,11 @@ import com.hytcshare.jerrywebspider.entity.LesheAlbumImages;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
-public interface LesheAlbumImagesDao extends JpaRepository<LesheAlbumImages, Integer> {
-    List<LesheAlbumImages> findAllByDownloaded(int downloaded);
+public interface LesheAlbumImagesDao extends JpaRepository<LesheAlbumImages, Integer>
+{
+	List<LesheAlbumImages> findAllByDownloaded(int downloaded);
 
-    LesheAlbumImages findByTitle(String title);
+	LesheAlbumImages findByTitle(String title);
 
-    LesheAlbumImages findByUrl(String url);
+	LesheAlbumImages findByUrl(String url);
 }

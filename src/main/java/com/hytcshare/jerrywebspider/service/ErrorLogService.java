@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ErrorLogService {
-    @Autowired
-    private ErrorLogDao errorLogDao;
+public class ErrorLogService
+{
+	@Autowired
+	private ErrorLogDao errorLogDao;
 
-    public void insertOrUpdate(ErrorLog errorLog) {
-        errorLogDao.save(errorLog);
-    }
+	public void insertOrUpdate(ErrorLog errorLog)
+	{
+		errorLogDao.save(errorLog);
+	}
 }

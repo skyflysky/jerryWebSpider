@@ -13,11 +13,12 @@ import javax.persistence.*;
 @EntityListeners(AuditingEntityListener.class)
 @Data
 @Table(name = "spider_task")
-public class SpiderTask {
-    @Id
-    @GeneratedValue
-    private int id;
-    private String taskName;
-    private String successCount;
-    private int status;
+public class SpiderTask
+{
+	@Id
+	@GeneratedValue
+	private int id;
+	private String taskName;
+	private String successCount;
+	private int status;
 }

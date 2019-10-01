@@ -13,20 +13,21 @@ import javax.persistence.*;
 @EntityListeners(AuditingEntityListener.class)
 @Data
 @Table(name = "leshe_images")
-public class LesheImages {
-    @Id
-    @GeneratedValue
-    private int id;
-    /**
-     * 图包名称
-     */
-    private String title;
-    /**
-     * 压缩包下载地址
-     */
-    private String url;
-    /**
-     * 是否已下载：0未下载，1已下载
-     */
-    private int downloaded;
+public class LesheImages
+{
+	@Id
+	@GeneratedValue
+	private int id;
+	/**
+	 * 图包名称
+	 */
+	private String title;
+	/**
+	 * 压缩包下载地址
+	 */
+	private String url;
+	/**
+	 * 是否已下载：0未下载，1已下载
+	 */
+	private int downloaded;
 }

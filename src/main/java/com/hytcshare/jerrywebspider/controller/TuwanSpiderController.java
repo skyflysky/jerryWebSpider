@@ -21,70 +21,75 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
  */
 @RestController
 @RequestMapping("/tuwanSpider")
-public class TuwanSpiderController extends BaseController {
+public class TuwanSpiderController extends BaseController
+{
 
-    @Value("${tuwan.welfareUrl}")
-    private String welfareUrl;
-    @Value("${tuwan.imageStorePath}")
-    private String tuwanImageStorePath;
-    @Value("${tuwan.spiderTaskName}")
-    private String tuwanSpiderTaskName;
-    @Value("${tuwan.downloadTaskName}")
-    private String tuwanDownloadTaskName;
+	@Value("${tuwan.welfareUrl}")
+	private String welfareUrl;
+	@Value("${tuwan.imageStorePath}")
+	private String tuwanImageStorePath;
+	@Value("${tuwan.spiderTaskName}")
+	private String tuwanSpiderTaskName;
+	@Value("${tuwan.downloadTaskName}")
+	private String tuwanDownloadTaskName;
 
-    @Autowired
-    private TuwanImagesService tuwanImagesService;
-    @Autowired
-    private TuwanMp3Service tuwanMp3Service;
-    @Autowired
-    private ErrorLogService errorLogService;
-    @Autowired
-    private SpiderTaskService spiderTaskService;
+	@Autowired
+	private TuwanImagesService tuwanImagesService;
+	@Autowired
+	private TuwanMp3Service tuwanMp3Service;
+	@Autowired
+	private ErrorLogService errorLogService;
+	@Autowired
+	private SpiderTaskService spiderTaskService;
 
-    @RequestMapping("/startSpider")
-    public DeferredResult startSpider(Integer start, Integer endLine) {
-        DeferredResult deferredResult = new DeferredResult();
+	@RequestMapping("/startSpider")
+	public DeferredResult startSpider(Integer start, Integer endLine)
+	{
+		DeferredResult deferredResult = new DeferredResult();
 
-        if (endLine == null || endLine < 0) {
-            sealFail(deferredResult, "endLine非法！");
-            return deferredResult;
-        }
-        if (start == null || start < 0) {
-            sealFail(deferredResult, "start非法！");
-            return deferredResult;
-        }
-        if (start > endLine) {
-            sealFail(deferredResult, "start非法！");
-            return deferredResult;
-        }
-        ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1);
-        TuwanSpiderTask task = new TuwanSpiderTask();
-        task.setTuwanStart(start);
-        task.setEndLine(endLine);
-        task.setWelfareUrl(welfareUrl);
-        task.setTuwanImagesService(tuwanImagesService);
-        task.setTuwanMp3Service(tuwanMp3Service);
-        task.setSpiderTaskService(spiderTaskService);
-        task.setTuwanSpiderTaskName(tuwanSpiderTaskName);
-        executorService.execute(task);
-        sealSuccess(deferredResult, "success! spider on going!");
-        return deferredResult;
-    }
+		if (endLine == null || endLine < 0)
+		{
+			sealFail(deferredResult, "endLine非法！");
+			return deferredResult;
+		}
+		if (start == null || start < 0)
+		{
+			sealFail(deferredResult, "start非法！");
+			return deferredResult;
+		}
+		if (start > endLine)
+		{
+			sealFail(deferredResult, "start非法！");
+			return deferredResult;
+		}
+		ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1);
+		TuwanSpiderTask task = new TuwanSpiderTask();
+		task.setTuwanStart(start);
+		task.setEndLine(endLine);
+		task.setWelfareUrl(welfareUrl);
+		task.setTuwanImagesService(tuwanImagesService);
+		task.setTuwanMp3Service(tuwanMp3Service);
+		task.setSpiderTaskService(spiderTaskService);
+		task.setTuwanSpiderTaskName(tuwanSpiderTaskName);
+		executorService.execute(task);
+		sealSuccess(deferredResult, "success! spider on going!");
+		return deferredResult;
+	}
 
-    @RequestMapping("/startDownLoadImageZipPackage")
-    public DeferredResult startDownLoadImageZipPackage() {
-        DeferredResult deferredResult = new DeferredResult();
-        ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1);
-        TuwanImageDownloadTask tuwanImageDownloadTask = new TuwanImageDownloadTask();
-        tuwanImageDownloadTask.setTuwanImagesService(tuwanImagesService);
-        tuwanImageDownloadTask.setErrorLogService(errorLogService);
-        tuwanImageDownloadTask.setTuwanImageStorePath(tuwanImageStorePath);
-        tuwanImageDownloadTask.setSpiderTaskService(spiderTaskService);
-        tuwanImageDownloadTask.setTuwanDownloadTaskName(tuwanDownloadTaskName);
-        executorService.execute(tuwanImageDownloadTask);
-        sealSuccess(deferredResult, "success! download on going!");
-        return deferredResult;
-    }
-
+	@RequestMapping("/startDownLoadImageZipPackage")
+	public DeferredResult startDownLoadImageZipPackage()
+	{
+		DeferredResult deferredResult = new DeferredResult();
+		ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1);
+		TuwanImageDownloadTask tuwanImageDownloadTask = new TuwanImageDownloadTask();
+		tuwanImageDownloadTask.setTuwanImagesService(tuwanImagesService);
+		tuwanImageDownloadTask.setErrorLogService(errorLogService);
+		tuwanImageDownloadTask.setTuwanImageStorePath(tuwanImageStorePath);
+		tuwanImageDownloadTask.setSpiderTaskService(spiderTaskService);
+		tuwanImageDownloadTask.setTuwanDownloadTaskName(tuwanDownloadTaskName);
+		executorService.execute(tuwanImageDownloadTask);
+		sealSuccess(deferredResult, "success! download on going!");
+		return deferredResult;
+	}
 
 }

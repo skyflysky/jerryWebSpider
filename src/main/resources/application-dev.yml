@@ -5,9 +5,9 @@ spring:
     #show-sql: true
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://10.1.1.174:3306/my_spider?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
-    username: root
-    password: 123456
+    url: jdbc:mysql://192.168.147.104:3306/my_spider?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+    username: webspider
+    password: WebSpider
 #log配置
 logging:
   file: jerryWebSpider.log
@@ -21,14 +21,14 @@ tuwan:
   welfareUrl: https://api.tuwan.com/apps/Welfare/detail
   #图包存储路径
   #imageStorePath: /home/jerrySpider/tuwan
-  imageStorePath: D:\data\tuWan
+  imageStorePath: D:\dad
   spiderTaskName: tuwanSpiderTask
   downloadTaskName: tuwanDownloadTask
   album:
     welfareUrl: https://api.tuwan.com/apps/Welfare/detail
     spiderTaskName: tuwanAlbumSpiderTask
     downloadTaskName: tuwanAlbumDownloadTask
-    imageStorePath: D:\data\tuWan\album
+    imageStorePath: D:\dad
 #Leshe地址
 leshe:
   #leshe爬虫入口

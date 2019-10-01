@@ -12,12 +12,13 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 @Data
 @Table(name = "error_log")
-public class ErrorLog {
-    @Id
-    @GeneratedValue
-    private int id;
-    private String creator;
-    private Date logTime;
-    private String errorMessage;
-    private String stackDump;
+public class ErrorLog
+{
+	@Id
+	@GeneratedValue
+	private int id;
+	private String creator;
+	private Date logTime;
+	private String errorMessage;
+	private String stackDump;
 }

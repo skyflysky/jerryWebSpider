@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TuwanMp3Service {
-    @Autowired
-    private TuwanMp3Dao tuwanMp3Dao;
+public class TuwanMp3Service
+{
+	@Autowired
+	private TuwanMp3Dao tuwanMp3Dao;
 
-    public void insertOrUpdate(TuwanMp3 tuwanMp3) {
-        tuwanMp3Dao.save(tuwanMp3);
-    }
+	public void insertOrUpdate(TuwanMp3 tuwanMp3)
+	{
+		tuwanMp3Dao.save(tuwanMp3);
+	}
 }
